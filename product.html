@@ -3,16 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Le Portier Shay VSOP | AccelPay demo</title>
+<title>LE PORTIER SHAY VSOP | Shop Le Portier Shay</title>
 <meta name="robots" content="noindex,nofollow">
 <link rel="icon" href="assets/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700&display=swap">
-<link rel="stylesheet" href="styles.css?v=2">
+<link rel="stylesheet" href="styles.css?v=3">
 </head>
 <body>
-<div class="announce">Order direct &middot; ships from a licensed retailer in your state</div>
+<div class="announce">Now available: shipping from a licensed retailer in your state</div>
 <header class="top">
   <div class="hdr">
     <a href="index.html"><img class="logo" src="assets/logo.png" alt="Le Portier"></a>
@@ -21,15 +21,14 @@
       <a href="index.html#story">Story</a>
       <a href="index.html#story">Mary Porter</a>
       <a href="index.html#craft">Craft &amp; Design</a>
-      <a href="index.html#shop">Shop</a>
-      <a href="product.html" aria-current="page">Shay VSOP</a>
-      <a href="index.html#how">Delivery</a>
+      <a href="index.html#shop" aria-current="page">Shop</a>
+      <a href="index.html#how">How this works</a>
     </nav>
     <div class="hdr-actions">
       <button class="burger" id="burger" aria-label="Menu">&#9776;</button>
-      <button class="cart-pill" data-lce-cart-toggle-button aria-label="Open cart">
+      <button class="cart-pill" data-cart-toggle aria-label="Open cart">
         <span class="lbl">Cart</span>
-        <span class="count" data-lce-cart-items-count hidden>0</span>
+        <span class="count" data-cart-count hidden>0</span>
       </button>
     </div>
   </div>
@@ -37,14 +36,11 @@
 
 <main class="band" style="padding-top:2.2rem">
   <div class="section-head" style="margin-bottom:2rem"><h2 style="font-size:1.9rem">Le Portier Shay</h2><div class="rule"></div></div>
-  <div class="lce-host">
-    <div id="lce-product" data-lce-product data-upc="00736040005209"></div>
-  </div>
-  <section style="margin-top:3.5rem">
-    <div class="section-head" style="margin-bottom:1.5rem"><h2 style="font-size:1.6rem">More from Le Portier</h2></div>
-    <div class="grid" id="more-grid"></div>
-  </section>
+  <div class="pdp" id="pdp" data-handle="le-portier-shay-vsop"></div>
 </main>
+<script>
+(function () { var p = new URLSearchParams(location.search).get('p'); if (p) document.getElementById('pdp').setAttribute('data-handle', p); })();
+</script>
 <footer class="site">
   <div class="ft">
     <div>
@@ -52,7 +48,7 @@
       <p style="font-size:.86rem;margin-top:1rem;max-width:24rem;color:var(--muted)">A dynamic range of upscale cognacs from Shannon Sharpe, crafted with an unwavering commitment to perfection in both craft and design.</p>
     </div>
     <div><h4>Shop</h4><ul>
-      <li><a href="product.html">Shay VSOP</a></li>
+      <li><a href="product.html">Le Portier Shay VSOP</a></li>
       <li><a href="product.html?p=shay-vsop-375ml">Shay VSOP, 375ML</a></li>
       <li><a href="product.html?p=collectors-edition">Collector's Edition</a></li>
       <li><a href="product.html?p=the-hall-of-fame-edition">Hall of Fame Edition</a></li>
@@ -64,41 +60,19 @@
       <li><a href="index.html#story">Story</a></li></ul></div>
   </div>
   <div class="legal-row">
-    Private sales demo by AccelPay using Le Portier's marks and imagery. Not affiliated with or endorsed by Le Portier.
-    No orders are placed. Orders on the live version are sold and fulfilled by licensed retailers. Please enjoy responsibly.
+    &copy; 2026, Shop Le Portier Shay &middot; Private sales demo by AccelPay using Le Portier's marks and imagery. Not affiliated with or endorsed by Le Portier.
+    No orders are placed. Please enjoy responsibly.
   </div>
 </footer>
 
 <div class="scrim" id="scrim"></div>
-<aside class="drawer" id="drawer" aria-label="Shopping cart">
-  <div class="dh"><h2>Your Cart</h2><button class="x" id="drawer-close" aria-label="Close cart">&times;</button></div>
+<aside class="drawer" id="drawer" aria-label="Your cart">
+  <div class="dh"><h2>Your cart</h2><button class="x" id="drawer-close" aria-label="Close">&times;</button></div>
+  <div class="cols"><span>Product</span><span>Total</span></div>
   <div class="items" id="drawer-items"></div>
-  <div class="foot" id="drawer-foot"></div>
+  <div class="df" id="drawer-foot"></div>
 </aside>
-<div class="ribbon">Demo &middot; AccelPay checkout</div>
-
-<script>
-// ?p= picks the product, the way a real PDP resolves its handle. Runs before app.js.
-(function () {
-  var p = new URLSearchParams(location.search).get('p');
-  if (p) { var el = document.getElementById('lce-product'); if (el) el.setAttribute('data-upc', p); }
-})();
-</script>
-<script src="elements-config.js?v=1"></script>
-<script src="app.js?v=2"></script>
-<script>
-(function () {
-  var grid = document.getElementById('more-grid');
-  if (!grid || !window.LPDemo) return;
-  var D = window.LPDemo, m = D.money, cur = document.getElementById('lce-product').getAttribute('data-upc');
-  grid.innerHTML = D.order.filter(function (k) { return k !== cur; }).map(function (k) {
-    var p = D.catalog[k];
-    var href = 'product.html' + (k === '00736040005209' ? '' : '?p=' + k);
-    return '<a class="card" href="' + href + '"><div class="shot"><img src="' + p.image + '" alt="' + p.name + '"></div>' +
-      '<span class="tag">' + p.tag + '</span><h3>' + p.name + '</h3>' +
-      '<span class="price">' + (p.connected ? 'From ' + m(D.networkFromPrice()) : m(p.sitePrice)) + '</span></a>';
-  }).join('');
-})();
-</script>
+<div class="ribbon">Demo &middot; Shopify + AccelPay app</div>
+<script src="app.js?v=4"></script>
 </body>
 </html>

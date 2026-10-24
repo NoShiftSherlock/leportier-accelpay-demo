@@ -3,16 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Le Portier Shay | AccelPay demo</title>
+<title>Shop Le Portier Shay | AccelPay demo</title>
 <meta name="robots" content="noindex,nofollow">
 <link rel="icon" href="assets/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700&display=swap">
-<link rel="stylesheet" href="styles.css?v=2">
+<link rel="stylesheet" href="styles.css?v=3">
 </head>
 <body>
-<div class="announce">Order direct &middot; ships from a licensed retailer in your state</div>
+<div class="announce">Now available: shipping from a licensed retailer in your state</div>
 <header class="top">
   <div class="hdr">
     <a href="index.html"><img class="logo" src="assets/logo.png" alt="Le Portier"></a>
@@ -22,14 +22,13 @@
       <a href="index.html#story">Mary Porter</a>
       <a href="index.html#craft">Craft &amp; Design</a>
       <a href="index.html#shop">Shop</a>
-      <a href="product.html">Shay VSOP</a>
-      <a href="index.html#how">Delivery</a>
+      <a href="index.html#how">How this works</a>
     </nav>
     <div class="hdr-actions">
       <button class="burger" id="burger" aria-label="Menu">&#9776;</button>
-      <button class="cart-pill" data-lce-cart-toggle-button aria-label="Open cart">
+      <button class="cart-pill" data-cart-toggle aria-label="Open cart">
         <span class="lbl">Cart</span>
-        <span class="count" data-lce-cart-items-count hidden>0</span>
+        <span class="count" data-cart-count hidden>0</span>
       </button>
     </div>
   </div>
@@ -40,7 +39,7 @@
     <div>
       <div class="eyebrow">From Shannon Sharpe</div>
       <h1>Le Portier Shay VSOP</h1>
-      <p>A timeless VSOP Cognac embodying intricate craftsmanship and centuries-old tradition. Now shipped from a licensed retailer in your state, with about 30 minute delivery where a local store carries it.</p>
+      <p>A timeless VSOP Cognac embodying intricate craftsmanship and centuries-old tradition. Shipped from a licensed retailer in your state, with delivery in about 30 minutes in the Phoenix and Tucson areas.</p>
       <div style="display:flex;gap:.75rem;flex-wrap:wrap">
         <a class="btn" href="product.html">Buy now</a>
         <a class="btn ghost" href="#shop">Shop the collection</a>
@@ -54,7 +53,6 @@
   <div class="section-head">
     <h2>Shop Le Portier</h2>
     <div class="rule"></div>
-    <p>Prices on connected products come from the licensed retailer that fulfills your order.</p>
   </div>
   <div class="grid" id="collection-grid"></div>
 </section>
@@ -86,31 +84,35 @@
 
 <section class="band" id="how" style="padding-top:1rem">
   <div class="section-head">
-    <h2>How your order arrives</h2>
+    <h2>How this works</h2>
     <div class="rule"></div>
-    <p>Checkout stays on leportiercognac.com. Every order is sold and fulfilled by a licensed retailer, so it is compliant in every state we ship to.</p>
+    <p>This is Le Portier's own Shopify store with the AccelPay Shopify app installed. The cart and checkout are Shopify. AccelPay handles payments, taxes and routing each order to a licensed retailer.</p>
   </div>
   <div class="how">
-    <div class="step"><span class="n">01</span><b>Enter your address</b><span>We match you with licensed retailers that stock Le Portier near you.</span></div>
-    <div class="step"><span class="n">02</span><b>Pick ship or deliver</b><span>Ship from a licensed retailer in your state, or get it in about 30 minutes through Gopuff where it is stocked.</span></div>
-    <div class="step"><span class="n">03</span><b>Check out here</b><span>One cart and one payment, on this site. No redirect to a marketplace.</span></div>
-    <div class="step"><span class="n">04</span><b>Signed for at the door</b><span>An adult 21+ signs for every bottle. Tracking comes from the retailer.</span></div>
+    <div class="step"><span class="n">01</span><b>Shopify cart</b><span>Shoppers add to cart on this site, in the native Shopify cart. No third-party cart and no redirect.</span></div>
+    <div class="step"><span class="n">02</span><b>Shopify checkout</b><span>The one-page Shopify checkout, the best-converting checkout in ecommerce, with card payments by AccelPay.</span></div>
+    <div class="step"><span class="n">03</span><b>Licensed retailer</b><span>The shipping address picks a licensed retailer in the buyer's state, or about 30 minute delivery through Gopuff where it is stocked.</span></div>
+    <div class="step"><span class="n">04</span><b>Your customer data</b><span>Every order and customer record lands in Le Portier's Shopify admin. You own the customer.</span></div>
   </div>
   <div class="rb-note" style="margin-top:1.5rem"><span class="rb-mark">ReserveBar</span><span><b>Also on ReserveBar.com.</b> Shay VSOP is listed on <a href="https://www.reservebar.com/products/le-portier-shay-vsop-cognac/GROUPING-1771428" target="_blank" rel="noopener">ReserveBar.com</a> for gifting.</span></div>
 </section>
 
 <section class="band" style="padding-top:1rem">
-  <div class="lce-host" style="padding:1.6rem">
-    <div class="eyebrow">For the Le Portier team: what changes</div>
-    <h2 style="margin:0 0 .8rem;font-size:1.6rem;text-transform:uppercase">This store, with AccelPay checkout</h2>
-    <p style="color:var(--muted);margin:0 0 1rem">Same site and same look. The cart, checkout and retailer routing above are AccelPay, in place of the current Bottle Nexus checkout. It can run as the AccelPay cart, the LiquidCommerce cart, or our native Shopify integration.</p>
-    <ul style="color:var(--muted);margin:0 0 1rem;padding-left:1.1rem">
+  <div class="panel">
+    <div class="eyebrow">For the Le Portier team</div>
+    <h2>Keep Shopify, add the AccelPay app</h2>
+    <p style="margin:0 0 1rem">Same store, same theme, same Shopify checkout. The AccelPay Shopify app plugs in and takes over payments, taxes and order routing to licensed retailers, so there is no third-party cart and the customer data stays in your Shopify admin.</p>
+    <ul style="margin:0 0 1rem;padding-left:1.1rem">
       <li>Ships to 40+ states through 3,500+ licensed retail locations</li>
       <li>Instant delivery in about 30 minutes through Gopuff, plus DoorDash from local retailers</li>
       <li>Live in about one week from kickoff, with no per-order charge to the brand</li>
       <li>A ReserveBar.com listing comes with it, and Shay VSOP is already there</li>
     </ul>
-    <p style="margin:0;border-left:2px solid var(--gold);padding-left:.8rem">Brands that switch their white-label store to our plugins (the AccelPay or LiquidCommerce cart, or our native Shopify integration) automatically receive advertising credit on ReserveBar.com and Minibar.</p>
+    <p class="credit">Brands that switch their white-label store to our plugins (the AccelPay or LiquidCommerce cart, or our native Shopify integration) automatically receive advertising credit on ReserveBar.com and Minibar.</p>
+  </div>
+  <div class="panel">
+    <div class="eyebrow">Reordering</div>
+    <p style="margin:0"><b style="color:#fff">Reordering is built in.</b> We track depletions at each retailer and flag reorders with suggested POs when stock runs low. For brands distributed by Southern Glazer's, we're setting up a pilot to send those reorders straight into Proof.</p>
   </div>
 </section>
 <footer class="site">
@@ -120,7 +122,7 @@
       <p style="font-size:.86rem;margin-top:1rem;max-width:24rem;color:var(--muted)">A dynamic range of upscale cognacs from Shannon Sharpe, crafted with an unwavering commitment to perfection in both craft and design.</p>
     </div>
     <div><h4>Shop</h4><ul>
-      <li><a href="product.html">Shay VSOP</a></li>
+      <li><a href="product.html">Le Portier Shay VSOP</a></li>
       <li><a href="product.html?p=shay-vsop-375ml">Shay VSOP, 375ML</a></li>
       <li><a href="product.html?p=collectors-edition">Collector's Edition</a></li>
       <li><a href="product.html?p=the-hall-of-fame-edition">Hall of Fame Edition</a></li>
@@ -132,21 +134,20 @@
       <li><a href="index.html#story">Story</a></li></ul></div>
   </div>
   <div class="legal-row">
-    Private sales demo by AccelPay using Le Portier's marks and imagery. Not affiliated with or endorsed by Le Portier.
-    No orders are placed. Orders on the live version are sold and fulfilled by licensed retailers. Please enjoy responsibly.
+    &copy; 2026, Shop Le Portier Shay &middot; Private sales demo by AccelPay using Le Portier's marks and imagery. Not affiliated with or endorsed by Le Portier.
+    No orders are placed. Please enjoy responsibly.
   </div>
 </footer>
 
 <div class="scrim" id="scrim"></div>
-<aside class="drawer" id="drawer" aria-label="Shopping cart">
-  <div class="dh"><h2>Your Cart</h2><button class="x" id="drawer-close" aria-label="Close cart">&times;</button></div>
+<aside class="drawer" id="drawer" aria-label="Your cart">
+  <div class="dh"><h2>Your cart</h2><button class="x" id="drawer-close" aria-label="Close">&times;</button></div>
+  <div class="cols"><span>Product</span><span>Total</span></div>
   <div class="items" id="drawer-items"></div>
-  <div class="foot" id="drawer-foot"></div>
+  <div class="df" id="drawer-foot"></div>
 </aside>
-<div class="ribbon">Demo &middot; AccelPay checkout</div>
-
-<script src="elements-config.js?v=1"></script>
-<script src="app.js?v=2"></script>
+<div class="ribbon">Demo &middot; Shopify + AccelPay app</div>
+<script src="app.js?v=4"></script>
 <script>
 (function () {
   var grid = document.getElementById('collection-grid');
@@ -154,13 +155,16 @@
   var D = window.LPDemo, m = D.money;
   grid.innerHTML = D.order.map(function (k) {
     var p = D.catalog[k];
-    var price = p.connected ? 'From ' + m(D.networkFromPrice()) : m(p.sitePrice);
-    var avail = p.connected ? 'Ships from licensed retailers \u00b7 30 min delivery in Phoenix and Tucson' : 'Connected to retailers at launch';
-    var href = 'product.html' + (k === '00736040005209' ? '' : '?p=' + k);
-    return '<a class="card" href="' + href + '"><div class="shot"><img src="' + p.image + '" alt="' + p.name + '"></div>' +
+    var href = 'product.html' + (k === 'le-portier-shay-vsop' ? '' : '?p=' + k);
+    return '<a class="card" href="' + href + '"><div class="shot"><img src="' + p.image + '" alt="' + p.short + '"></div>' +
       '<span class="tag">' + p.tag + '</span><h3>' + p.name + '</h3>' +
-      '<span class="price">' + price + '</span><span class="avail">' + avail + '</span></a>';
+      '<span class="price">' + m(p.price) + ' USD</span>' +
+      '<span class="avail">' + (p.connected ? 'Ships from licensed retailers' : 'Coming soon') + '</span>' +
+      (p.connected ? '<span class="btn" data-add="' + k + '" style="margin-top:.4rem">Add to cart</span>' : '') + '</a>';
   }).join('');
+  grid.querySelectorAll('[data-add]').forEach(function (b) {
+    b.addEventListener('click', function (e) { e.preventDefault(); D.add(b.getAttribute('data-add'), 1); });
+  });
 })();
 </script>
 </body>
