@@ -242,6 +242,20 @@ body.co { background: #fff; color: #141414; font-family: -apple-system, BlinkMac
 .thanks p { color: #555; }
 .thanks .num { font-family: var(--mono); color: #000; }
 
+/* express checkout buttons (Shopify accelerated checkout) */
+.xpay { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: .5rem; }
+.xpay .xb { height: 42px; border: none; border-radius: 5px; display: flex; align-items: center; justify-content: center; gap: .15rem; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; font-size: 1.05rem; color: #fff; letter-spacing: 0; text-transform: none; }
+.xpay.big .xb { height: 48px; }
+.xpay .xb span { font-weight: 500; }
+.xpay .shop { background: #5a31f4; }
+.xpay .shop b { font-weight: 800; font-style: italic; letter-spacing: -.02em; margin-right: .1rem; }
+.xpay .apple { background: #000; border: 1px solid #333; }
+.xpay .google { background: #000; border: 1px solid #333; }
+.xpay .google .g { font-weight: 700; background: linear-gradient(90deg,#4285f4,#ea4335,#fbbc05,#34a853); -webkit-background-clip: text; background-clip: text; color: transparent; margin-right: .15rem; }
+.xp-title { text-align: center; font-size: .85rem; color: #707070; margin-bottom: .6rem; }
+.or { display: flex; align-items: center; gap: .8rem; color: #707070; font-size: .78rem; margin: 1.4rem 0 .6rem; }
+.or::before, .or::after { content: ""; flex: 1; height: 1px; background: #dedede; }
+
 /* panel on the home page */
 .panel { background: var(--panel); border: 1px solid var(--line); padding: 1.6rem; }
 .panel + .panel { margin-top: 1.25rem; }

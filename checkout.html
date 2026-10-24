@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700&display=swap">
-<link rel="stylesheet" href="styles.css?v=3">
+<link rel="stylesheet" href="styles.css?v=4">
 </head>
 <body class="co">
 <div class="co-head"><div class="in">
@@ -32,6 +32,10 @@
 <div id="checkout-view" class="checkout">
   <div class="co-left"><div class="inner">
     <form id="co-form" autocomplete="off">
+      <div class="xp-title">Express checkout</div>
+      <div id="xpay-top"></div>
+      <div id="xpay-note" class="callout" hidden></div>
+      <div class="or"><span>OR</span></div>
       <div class="co-h">Contact <small>Sign in</small></div>
       <input class="co-field" type="email" name="email" placeholder="Email" required>
       <label class="co-chk"><input type="checkbox" checked> Email me with news and offers</label>
@@ -76,7 +80,7 @@
           <label class="co-chk"><input type="checkbox" checked> Use shipping address as billing address</label>
         </div>
       </div>
-      <div class="callout"><span class="dot"></span><span><b>Payments, taxes and retailer routing by AccelPay.</b> Card payments run through AccelPay inside the Shopify checkout. Placeholder card in this demo; nothing is charged.</span></div>
+      <div class="callout"><span class="dot"></span><span><b>Payments, taxes and retailer routing by AccelPay.</b> Card, Shop Pay, Apple Pay and Google Pay payments run through AccelPay inside the Shopify checkout. Placeholder card in this demo; nothing is charged.</span></div>
       <label class="co-chk" style="margin-top:1rem"><input type="checkbox" required> I confirm I am 21 or older. An adult signature is required on delivery.</label>
       <button class="pay-btn" id="pay" type="submit" disabled>Pay now</button>
       <div class="co-links"><a href="#">Refund policy</a><a href="#">Shipping</a><a href="#">Privacy policy</a><a href="#">Terms of service</a></div>
@@ -85,7 +89,7 @@
   <div class="co-right"><div class="inner" id="os"></div></div>
 </div>
 <div class="ribbon">Demo &middot; Shopify + AccelPay app</div>
-<script src="app.js?v=4"></script>
+<script src="app.js?v=5"></script>
 <script>
 (function () {
   if (!new URLSearchParams(location.search).get('confirmed')) return;

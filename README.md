@@ -17,15 +17,16 @@ taxes and order routing to licensed retailers, so there is no third-party cart a
 order and customer record stay in the brand's Shopify admin. Small callouts at checkout
 mark what AccelPay does.
 
-AccelPay Payments does not support Shop Pay, Apple Pay, Google Pay or subscriptions, so
-the checkout shows card payment only. Do not add express checkout buttons.
+Express checkout (Shop Pay, Apple Pay, Google Pay) is supported by the AccelPay Shopify
+integration and appears at the top of checkout and in the cart drawer, as on a standard
+Shopify store. In the demo the buttons fill a sample contact and address and continue.
 
 | Page | What it shows |
 | --- | --- |
 | `index.html` | Home, collection, story, "How this works", team panel, reordering note |
 | `product.html` | Shay VSOP 750ML product page (Shopify theme style) |
 | `product.html?p=<handle>` | 375ML, Collector's Edition, Hall of Fame Edition (coming soon state) |
-| `checkout.html` | Shopify one-page checkout: shipping rates by address (licensed retailer per state, Gopuff about 30 minute delivery in Arizona ZIPs), card payment, AccelPay callouts |
+| `checkout.html` | Shopify one-page checkout: shipping rates by address (licensed retailer per state, Gopuff about 30 minute delivery in Arizona ZIPs), express checkout plus card payment, AccelPay callouts |
 
 ## Real vs illustrative
 

@@ -5,9 +5,10 @@
  * checkout: payments, taxes and routing each order to a licensed retailer by the
  * shipping address. No third-party cart.
  *
- * AccelPay Payments does not support Shop Pay, Apple Pay, Google Pay or
- * subscriptions, so the checkout shows card payment only. Do not add express
- * checkout buttons.
+ * Express checkout (Shop Pay, Apple Pay, Google Pay) is supported by the
+ * AccelPay Shopify integration and is shown at the top of checkout and in the
+ * cart drawer, as on a standard Shopify store. In the demo the buttons just
+ * continue the flow.
  *
  * WHAT IS REAL AND WHAT IS NOT
  *   Real:  products, images, copy and Shopify prices from leportiercognac.com
@@ -136,7 +137,13 @@
     const f = $('#drawer-foot');
     if (f) f.innerHTML = '<div class="est"><span>Estimated total</span><span>' + money(subtotal()) + ' USD</span></div>' +
       '<div class="small">Taxes and shipping calculated at checkout. Orders ship from a licensed retailer in your state.</div>' +
-      '<a class="btn block" href="checkout.html"' + (state.items.length ? '' : ' style="opacity:.4;pointer-events:none"') + '>Check out</a>';
+      '<a class="btn block" href="checkout.html"' + (state.items.length ? '' : ' style="opacity:.4;pointer-events:none"') + '>Check out</a>' +
+      (state.items.length ? '<div class="xpay">' +
+        '<button type="button" class="xb shop" data-xpay="Shop Pay" aria-label="Shop Pay"><b>shop</b><span>Pay</span></button>' +
+        '<button type="button" class="xb apple" data-xpay="Apple Pay" aria-label="Apple Pay"><svg width="17" height="20" viewBox="0 0 17 20" aria-hidden="true" fill="#fff"><path d="M14.1 10.6c0-2.6 2.1-3.8 2.2-3.9-1.2-1.8-3.1-2-3.7-2-1.6-.2-3.1.9-3.9.9-.8 0-2-.9-3.4-.9C3.6 4.8 2 5.8 1 7.4c-1.9 3.3-.5 8.2 1.4 10.9.9 1.3 2 2.8 3.4 2.7 1.4-.1 1.9-.9 3.5-.9s2.1.9 3.5.9c1.5 0 2.4-1.3 3.3-2.7 1-1.5 1.5-3 1.5-3.1 0 0-2.9-1.1-3-4.6zM11.5 2.9c.7-.9 1.2-2.1 1.1-3.3-1 0-2.3.7-3 1.6-.7.8-1.2 2-1.1 3.2 1.2.1 2.3-.6 3-1.5z"/></svg><span>Pay</span></button>' +
+        '<button type="button" class="xb google" data-xpay="Google Pay" aria-label="Google Pay"><b class="g">G</b><span>Pay</span></button>' +
+      '</div>' : '');
+    $$('[data-xpay]', f).forEach(b => b.addEventListener('click', () => { location.href = 'checkout.html?express=' + encodeURIComponent(b.getAttribute('data-xpay')); }));
     $$('[data-q]', box).forEach(b => b.addEventListener('click', () => setQty(b.getAttribute('data-h'), +b.getAttribute('data-q'))));
   }
 
@@ -212,6 +219,22 @@
       const v = b.getAttribute('data-fill').split('|');
       form.address1.value = v[0]; form.city.value = v[1]; $('#zip').value = v[2]; co.rate = null; renderCheckout();
     }));
+    const xp = $('#xpay-top');
+    if (xp) { xp.innerHTML = '<div class="xpay big">' +
+        '<button type="button" class="xb shop" data-xpay="Shop Pay" aria-label="Shop Pay"><b>shop</b><span>Pay</span></button>' +
+        '<button type="button" class="xb apple" data-xpay="Apple Pay" aria-label="Apple Pay"><svg width="17" height="20" viewBox="0 0 17 20" aria-hidden="true" fill="#fff"><path d="M14.1 10.6c0-2.6 2.1-3.8 2.2-3.9-1.2-1.8-3.1-2-3.7-2-1.6-.2-3.1.9-3.9.9-.8 0-2-.9-3.4-.9C3.6 4.8 2 5.8 1 7.4c-1.9 3.3-.5 8.2 1.4 10.9.9 1.3 2 2.8 3.4 2.7 1.4-.1 1.9-.9 3.5-.9s2.1.9 3.5.9c1.5 0 2.4-1.3 3.3-2.7 1-1.5 1.5-3 1.5-3.1 0 0-2.9-1.1-3-4.6zM11.5 2.9c.7-.9 1.2-2.1 1.1-3.3-1 0-2.3.7-3 1.6-.7.8-1.2 2-1.1 3.2 1.2.1 2.3-.6 3-1.5z"/></svg><span>Pay</span></button>' +
+        '<button type="button" class="xb google" data-xpay="Google Pay" aria-label="Google Pay"><b class="g">G</b><span>Pay</span></button>' +
+      '</div>';
+      $$('[data-xpay]', xp).forEach(b => b.addEventListener('click', () => expressFill(b.getAttribute('data-xpay')))); }
+    const q = new URLSearchParams(location.search).get('express'); if (q) expressFill(q);
+    function expressFill(method) {
+      // Demo: the wallet hands back a saved contact and address, then checkout continues.
+      form.email.value = form.email.value || 'shopper@example.com';
+      form.first.value = form.first.value || 'Jordan'; form.last.value = form.last.value || 'Lee';
+      form.address1.value = '350 E 13th St'; form.city.value = 'New York'; $('#zip').value = '10009'; co.rate = null; renderCheckout();
+      const n = $('#xpay-note'); if (n) { n.hidden = false; n.textContent = method + ' filled your contact and address. Pick a shipping method below, then pay.'; }
+      const r = $('#rates'); if (r && r.scrollIntoView) r.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
     form.addEventListener('submit', e => {
       e.preventDefault(); if (!co.current) return;
       const n = 'LP-DEMO-' + (1000 + Math.floor(Math.random() * 9000));
